@@ -6,48 +6,42 @@
 
 /* V A R I A B L E S */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap'); /* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
 :root {
-  /* Font Size */
-  --fg-primary: 12vh; /* Time and Greetings */
-  --fg-secondary: 3vh; /* Greetings and Weather widger */
-  --fg-date: 8vh; /* Date */
-  --fg-list: 2vh; /* Links List */
-  --icon: 3vh; /* Icon Size */
+  --fg-primary: 12vh;
+  --fg-secondary: 3vh;
+  --fg-date: 8vh;
+  --fg-list: 2vh;
+  --icon: 3vh;
 
-  /* Fonts Color */
-  --fg: #3a3a3a; /* Foreground color */
-  --sfg: #494949; /* Sceondary Foreground color */
+  /* Glass Light Theme */
+  --fg: rgba(30, 30, 30, 0.85);
+  --sfg: rgba(50, 50, 50, 0.6);
+  --accent: #8be9fd;
+  --background: #e0f7fa;
+  --cards: rgba(255, 255, 255, 0.25);
 
-  /* Light Colors  */
-  --accent: #57a0d9; /* Hover color */
-  --background: #f5f5f5; /* Background color */
-  --cards: #e4e6e6; /* Cards color */
-
-  /* Image background  */
-  --imgbg: url(assets/background.jpg); /* Image URL */
+  --imgbg: url(assets/background.jpg);
   --imgcol: linear-gradient(
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.7)
-  ); /* Filter color */
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6)
+  );
 }
 
 .darktheme {
-  /* Dark Colors  */
-  --accent: #57a0d9; /* Hover color */
-  --background: #19171a; /* Background color */
-  --cards: #201e21; /* Cards color */
+  /* Glass Dark Theme */
+  --accent: #ff79c6;
+  --background: rgba(25, 25, 35, 0.85);
+  --cards: rgba(40, 40, 60, 0.4);
 
-  /* Fonts Color */
-  --fg: #d8dee9; /* Foreground color */
-  --sfg: #2c292e; /* Secondary Foreground color */
+  --fg: rgba(240, 248, 255, 0.95);
+  --sfg: rgba(180, 180, 220, 0.4);
 
-  /* Image background  */
   --imgcol: linear-gradient(
-    rgba(0, 0, 0, 0.85),
-    rgba(0, 0, 0, 0.85)
-  ); /* Filter color */
+    rgba(10, 10, 20, 0.7),
+    rgba(10, 10, 20, 0.7)
+  );
 }
 
 /* S T Y L E S */
@@ -89,7 +83,7 @@ body {
   color: var(--fg);
   border: none;
   cursor: pointer;
-  background-color: #00000000;
+  background-color: transparent;
 }
 
 #themeIcon {
@@ -109,13 +103,16 @@ body {
 
 .card {
   background-color: var(--cards);
-  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.35);
-  border-radius: 5px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 15px;
 }
 
 .card:hover {
   transform: translateY(-0.2rem);
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .timeBlock {
@@ -136,19 +133,8 @@ body {
   justify-content: center;
 }
 
-.date {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.weather {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+.date,
+.weather,
 .clock {
   display: flex;
   align-items: center;
@@ -184,17 +170,12 @@ body {
   height: 70px;
 }
 
-.weatherValue p {
-  font-size: var(--fg-secondary);
-  font-weight: bolder;
-  margin-left: 15px;
-  color: var(--fg);
-}
-
+.weatherValue p,
 .weatherDescription p {
   font-size: var(--fg-secondary);
   margin-left: 15px;
   color: var(--fg);
+  font-weight: bold;
 }
 
 .reduceGap {
@@ -239,6 +220,9 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  border-radius: 10px;
+  background: transparent;
+  transition: background 0.2s ease;
 }
 
 .buttonIcon {
@@ -247,30 +231,13 @@ body {
   color: var(--fg);
 }
 
-.button__1 {
-  grid-row: 1;
-  grid-column: 1;
-}
-.button__2 {
-  grid-row: 1;
-  grid-column: 2;
-}
-.button__3 {
-  grid-row: 2;
-  grid-column: 1;
-}
-.button__4 {
-  grid-row: 2;
-  grid-column: 2;
-}
-.button__5 {
-  grid-row: 1;
-  grid-column: 3;
-}
-.button__6 {
-  grid-row: 2;
-  grid-column: 3;
-}
+.button__1 { grid-row: 1; grid-column: 1; }
+.button__2 { grid-row: 1; grid-column: 2; }
+.button__3 { grid-row: 2; grid-column: 1; }
+.button__4 { grid-row: 2; grid-column: 2; }
+.button__5 { grid-row: 1; grid-column: 3; }
+.button__6 { grid-row: 2; grid-column: 3; }
+
 .button:hover {
   background-color: var(--accent);
 }
@@ -304,7 +271,6 @@ body {
   grid-row: 1 / span 2;
 }
 .listIcon {
-  /* margin-top: 3vh; */
   margin-bottom: 2vh;
   color: var(--fg);
   width: var(--icon);
@@ -320,6 +286,7 @@ body {
   font-weight: bold;
   text-align: center;
   width: 80%;
+  transition: background 0.2s;
 }
 .listItem:hover {
   background-color: var(--accent);
